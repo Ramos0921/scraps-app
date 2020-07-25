@@ -1,25 +1,55 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+require('dotenv').config();
+var mongoose = require('mongoose')
+var ObjectId = require('mongodb').ObjectID;
+
+var url = process.env.DB||'mongodb://localhost/scraps'
+
+
+mongoose.connect(url,{
+  useMongoClient: true,
+});
 
 var db = mongoose.connection;
 
-db.on('error', function() {
-  console.log('mongoose connection error');
-});
+db.on('error',console.error.bind(console,'connection error'));
 
 db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var food = mongoose.Schema({
+  restaurantName: String,
+  foodName: String,
+  ingredients: String,
+  price: Number,
+  imageUrl:String,
+  time:Number,
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var newFood = mongoose.model('food', food);
+
+
+var save = function(foodItem,callback){
+  console.log(foodItem)
+  var newFoodItem = new newFood();
+  newFoodItem.restaurantName= foodItem.restaurantName;
+  newFoodItem.foodName = foodItem.foodName;
+  newFoodItem.ingredients= foodItem.ingredients;
+  newFoodItem.price = foodItem.price;
+  newFoodItem.imageUrl = foodItem.imageUrl;
+  newFoodItem.time= foodItem.time;
+
+  newFoodItem.save()
+    .then((data)=>{
+      callback(null,data)
+    })
+    .catch((err)=>{
+      callback(err,null)
+    })
+}
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  newFood.find({}, function(err, items) {
     if(err) {
       callback(err, null);
     } else {
@@ -28,4 +58,32 @@ var selectAll = function(callback) {
   });
 };
 
+var deleteOne = function(id, callback){
+  console.log(id._id)
+  const delId = id._id;
+  newFood.deleteOne({"_id": ObjectId(delId)})
+    .then((data)=>{
+      callback(null,data);
+    })
+    .catch((err)=>{
+      callback(err,null);
+    })
+}
+
+var updateOne = function(obj,callback){
+
+  const upId = obj._id;
+  const newPrice = obj.price;
+  newFood.updateOne({_id:upId},{price:newPrice})
+    .then((data)=>{
+      callback(null,data)
+    })
+    .catch((err)=>{
+      callback(err,null)
+    })
+}
+
+module.exports.updateOne= updateOne;
+module.exports.deleteOne= deleteOne;
+module.exports.save = save;
 module.exports.selectAll = selectAll;

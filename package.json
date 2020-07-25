@@ -17,6 +17,7 @@
     "babel-preset-react": "^6.23.0",
     "cors": "^2.8.5",
     "dot-env": "0.0.1",
+    "dotenv": "^8.2.0",
     "jest": "^26.1.0",
     "mongo": "^0.1.0",
     "mongodb": "^3.5.9",
