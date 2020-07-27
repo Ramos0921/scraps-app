@@ -14,13 +14,14 @@ var db = mongoose.connection;
 db.on('error',console.error.bind(console,'connection error'));
 
 db.once('open', function() {
-  console.log('mongoose connected successfully');
+  console.log('Database connected successfully');
 });
 
 var food = mongoose.Schema({
   restaurantName: String,
   foodName: String,
   ingredients: String,
+  originalPrice:Number,
   price: Number,
   imageUrl:String,
   time:Number,
@@ -38,6 +39,7 @@ var save = function(foodItem,callback){
   newFoodItem.price = foodItem.price;
   newFoodItem.imageUrl = foodItem.imageUrl;
   newFoodItem.time= foodItem.time;
+  newFoodItem.originalPrice = foodItem.originalPrice;
 
   newFoodItem.save()
     .then((data)=>{
@@ -79,7 +81,7 @@ var updateOne = function(obj,callback){
       callback(null,data)
     })
     .catch((err)=>{
-      callback(err,null)
+      callback(err,null);
     })
 }
 

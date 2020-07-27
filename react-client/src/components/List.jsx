@@ -1,12 +1,21 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
-const List = (props) => (
-  <div>
-    <h4> List Component </h4>
-    There are { props.items.length } items.
-    { props.items.map(item => <ListItem item={item}/>)}
-  </div>
-)
+const List = function (props){
+  return(
+      <div className="foodReadyContainer">
+        <div className="ScrapsTogo">
+          <div className="ready-text">
+            <p>Scraps Ready Togo </p>
+          </div>
+        </div>
+        <div className="itemsContainer">
+          <nav className="itemList">
+            { props.items.map((item,key) => <ListItem item={item} key ={key} scrapBought={props.scrapBought}/>)}
+          </nav>
+        </div>
+      </div>
+    )
+  }
 
 export default List;
