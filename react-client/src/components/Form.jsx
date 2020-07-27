@@ -24,7 +24,6 @@ class Form extends React.Component{
   }
   handleAdd(event){
     event.preventDefault();
-
     this.props.addScrap(this.state);
     this.setState({
       restaurantName:'',

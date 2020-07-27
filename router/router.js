@@ -24,17 +24,16 @@ router.post('/scraps',(req,res)=>{
 })
 
 router.delete('/scraps/:id',(req,res)=>{
-  console.log(req.params.id)
   var newArr =req.params.id.split('');
   newArr.shift()
   var searchId = newArr.join('');
-  // db.deleteOne(req.body,(err,data)=>{
-  //   if(err){
-  //     res.send(err)
-  //   }else{
-  //     res.json(data);
-  //   }
-  // })
+  db.deleteOne(searchId,(err,data)=>{
+    if(err){
+      res.send(err)
+    }else{
+      res.json(data);
+    }
+  })
 
 })
 router.put('/scraps',(req,res)=>{
@@ -42,6 +41,7 @@ router.put('/scraps',(req,res)=>{
     if(err){
       res.send(err)
     }else{
+      console.log(data)
       res.json(data);
     }
   })

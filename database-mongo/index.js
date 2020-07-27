@@ -60,9 +60,7 @@ var selectAll = function(callback) {
   });
 };
 
-var deleteOne = function(id, callback){
-  console.log(id._id)
-  const delId = id._id;
+var deleteOne = function(delId, callback){
   newFood.deleteOne({"_id": ObjectId(delId)})
     .then((data)=>{
       callback(null,data);
@@ -73,7 +71,6 @@ var deleteOne = function(id, callback){
 }
 
 var updateOne = function(obj,callback){
-
   const upId = obj._id;
   const newPrice = obj.price;
   newFood.updateOne({_id:upId},{price:newPrice})
