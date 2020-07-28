@@ -5,7 +5,7 @@ var ObjectId = require('mongodb').ObjectID;
 var url = process.env.DB||'mongodb://localhost/scraps';
 
 
-mongoose.connect(url,{ useUnifiedTopology: true });
+mongoose.connect(url,{ useUnifiedTopology: true,useNewUrlParser: true});
 
 var db = mongoose.connection;
 
