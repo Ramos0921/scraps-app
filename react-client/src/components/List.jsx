@@ -6,7 +6,7 @@ const List = function (props){
       <div className="foodReadyContainer">
         <div className="ScrapsTogo">
           <div className="ready-text">
-            <p>Scraps Ready Togo </p>
+            <p>Scraps Ready To-go </p>
           </div>
         </div>
         <div className="itemsContainer">
