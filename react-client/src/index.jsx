@@ -19,11 +19,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log(window.location.href)
     var url = window.location.href.split('');
     url.pop();
     var newUrl= url.join('')
     console.log(newUrl)
-    axios.get(newUrl+'scraps')
+    axios.get('https://mvp-scraps-app.herokuapp.com/scraps')
       .then((data)=>{
         this.setState({
           items: data.data,
