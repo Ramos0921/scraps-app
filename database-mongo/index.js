@@ -2,12 +2,10 @@ require('dotenv').config();
 var mongoose = require('mongoose')
 var ObjectId = require('mongodb').ObjectID;
 
-var url = process.env.DB||'mongodb://localhost/scraps'
+var url = process.env.DB||'mongodb://localhost/scraps';
 
 
-mongoose.connect(url,{
-  useMongoClient: true,
-});
+mongoose.connect(url,{ useUnifiedTopology: true });
 
 var db = mongoose.connection;
 
