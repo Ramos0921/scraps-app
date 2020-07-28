@@ -19,7 +19,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/scraps')
+    var url = window.location.href.split('');
+    url.pop();
+    var newUrl= url.join('')
+    axios.get(newUrl+'scraps')
       .then((data)=>{
         this.setState({
           items: data.data,
@@ -32,10 +35,16 @@ class App extends React.Component {
   deleteScrap(item){
     if(confirm(`Please confirm that you want to delete ${item.foodName} from ${item.restaurantName}. Press okay if your would like to continue.`))
     {
-      axios.delete(`http://localhost:3000/scraps/:${item._id}`)
+      var url = window.location.href.split('');
+      url.pop();
+      var newUrl= url.join('')
+      axios.delete(newUrl+`scraps/:${item._id}`)
       .then((data)=>{
         alert(`Your Scrap has been deleted from our board.`)
-        axios.get('http://localhost:3000/scraps')
+        var url = window.location.href.split('');
+        url.pop();
+        var newUrl= url.join('')
+        axios.get(url+'scraps')
         .then((data)=>{
           this.setState({
             items: data.data,
@@ -62,10 +71,16 @@ class App extends React.Component {
         _id:item.confirmationNumber,
         price:Number(item.newPrice),
       }
-      axios.put('http://localhost:3000/scraps',obj)
+      var url = window.location.href.split('');
+      url.pop();
+      var newUrl= url.join('')
+      axios.put(newUrl+'scraps',obj)
         .then((data)=>{
           alert(`The price on Scrap time ${item.confirmationNumber} has been updated to ${item.newPrice}. Please confirm that our board refelcts your update. Again thank for choosing Scraps!`)
-          axios.get('http://localhost:3000/scraps')
+          var url = window.location.href.split('');
+          url.pop();
+          var newUrl= url.join('')
+          axios.get(newUrl+'scraps')
             .then((data)=>{
               this.setState({
                 items: data.data,
@@ -88,11 +103,16 @@ class App extends React.Component {
     event.preventDefault();
     if(confirm(`Thank you for choosing Scraps! Please confirm your purchase of ${item.foodName} from ${item.restaurantName}. Press okay if your order is correct. A confirmation number will be provided shortly.`))
     {
-      axios.delete(`http://localhost:3000/scraps/:${item._id}`)
+      var url = window.location.href.split('');
+      url.pop();
+      var newUrl= url.join('')
+      axios.delete(newUrl+`scraps/:${item._id}`)
       .then((data)=>{
         alert(`Thank you for your Scraps purchase. Your confirmation number is: ${item._id}. When picking up your order simply show your purchase confirmation number to the restaurant cashier and the rest is taken care of. HAPPY SCRAPPING! Hope to see you soon!`)
-
-        axios.get('http://localhost:3000/scraps')
+        var url = window.location.href.split('');
+        url.pop();
+        var newUrl= url.join('')
+        axios.get(newUrl+'scraps')
         .then((data)=>{
           this.setState({
             items: data.data,
@@ -114,7 +134,10 @@ class App extends React.Component {
   }
 
   addScrap(scrap){
-    axios.post('http://localhost:3000/scraps',scrap)
+    var url = window.location.href.split('');
+    url.pop();
+    var newUrl= url.join('')
+    axios.post(newUrl+'scraps',scrap)
       .then((data)=>{
         var info = data.data
         var newLine = "\r\n"
