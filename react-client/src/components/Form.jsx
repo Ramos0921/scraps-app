@@ -55,7 +55,7 @@ class Form extends React.Component{
               <input type='text' id='foodName' onChange={this.handleChange} value={this.state.foodName}/>
             </p>
             <p>
-              Ignredients: {' '}
+              Ingredients: {' '}
               <input type='text' id='ingredients' onChange={this.handleChange} value={this.state.ingredients}/>
             </p>
             <p>

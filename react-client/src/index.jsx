@@ -15,6 +15,7 @@ class App extends React.Component {
     this.addScrap= this.addScrap.bind(this);
     this.scrapBought=this.scrapBought.bind(this);
     this.updateScrap=this.updateScrap.bind(this);
+    this.deleteScrap=this.deleteScrap.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,33 @@ class App extends React.Component {
       .catch((e)=>{
         console.log(e);
       })
+  }
+  deleteScrap(item){
+    if(confirm(`Please confirm that you want to delete ${item.foodName} from ${item.restaurantName}. Press okay if your would like to continue.`))
+    {
+      axios.delete(`http://localhost:3000/scraps/:${item._id}`)
+      .then((data)=>{
+        alert(`Your Scrap has been deleted from our board.`)
+        axios.get('http://localhost:3000/scraps')
+        .then((data)=>{
+          this.setState({
+            items: data.data,
+          })
+         })
+        .catch((e)=>{
+          console.log(e);
+        })
+      })
+      .catch((err)=>
+      {
+        alert('An error occured please confirm you entered the correct Scarp confirmation number.')
+        console.log(err);
+      })
+
+    }else{
+      alert(`Your request has been cancled!`)
+    }
+
   }
   updateScrap(item){
     if(confirm(`${item.restaurantName} are you sure you want to update the current price on Scrap item number ${item.confirmationNumber} to $${item.newPrice}? Press okay if you wish to continue.`)){
@@ -134,7 +162,7 @@ class App extends React.Component {
             </div>
           </div>
           <div className="delete-form-container">
-              <DeteteForm/>
+              <DeteteForm deleteScrap={this.deleteScrap}/>
           </div>
         </div>
       </div>
