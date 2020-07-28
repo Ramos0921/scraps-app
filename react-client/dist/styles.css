@@ -48,7 +48,7 @@ body {
   height: 100%;
   width: 50%;
   justify-content: center;
-  border:5px solid pink;
+  border:5px solid rgb(255, 217, 0);
   box-sizing: border-box;
   margin-left: 25%;
   background-color: white;
@@ -136,7 +136,7 @@ button:focus{
   height: 100%;
   width: 70%;
   justify-content: center;
-  border: 5px solid pink;
+  border: 5px solid  rgb(255, 217, 0);
   box-sizing: border-box;
   margin-left: 15%;
   background-color: white;
@@ -214,13 +214,14 @@ button:hover{
   width: 70%;
   margin-left: 15%;
   background-color: white;
-  border:6px solid pink;
+  border:6px solid rgb(255, 217, 0);
 }
 .update-text p{
   width: 95%;
   margin-left: 3%;
   color: rgb(191, 83, 83);
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: bold;
   border: 5px solid rgb(114, 114, 215);
   border-top: none;
   border-left: none;
@@ -272,13 +273,14 @@ button:hover{
   width: 70%;
   margin-left: 15%;
   background-color: white;
-  border:6px solid pink;
+  border:6px solid rgb(255, 217, 0);
   justify-content: center;
 }
 .delete-title p{
   position: absolute;
   color: rgb(191, 83, 83);
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: bold;
   margin-left: 7%;
   border: 5px solid rgb(114, 114, 215);
   border-top: none;
@@ -318,5 +320,75 @@ button:hover{
   height: 42px;
   width:30%;
   margin-left: 35%;
+}
+
+.best-deals-container{
+  padding-top: 10px;
+  height: 400px;
+}
+.best-deals-title{
+  height: 100px;
+  padding-bottom: 10px;
+}
+.best-title-container{
+  width: 60%;
+  height: 100%;
+  margin-left: 20%;
+  border:6px solid rgb(255, 217, 0);
+  background-color: white;
+  text-align: center;
+}
+.best-title-container p{
+  font-size: 45px;
+  margin-top: 3%;
+  color: rgb(191, 83, 83);
+  font-weight: bold;
+  border: 5px solid rgb(114, 114, 215);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.best-deals-nav{
+  height: 250px;
+  width: 80%;
+  margin-left: 10%;
+  border: 6px solid green;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+.grid-deal{
+  display: grid;
+  grid-template-columns: 25% 30% 10% 35%;
+  border: 3px solid rgb(255, 217, 0);
+}
+.percentage{
+  text-align: center;
+  height: 70%;
+}
+.percentage p{
+  color:red;
+  font-weight: bold;
+}
+.discount-text{
+  font-size: 25px;
+}
+.best-deal-description{
+  justify-content: center;
+  height: 70%;
+}
+.deal-buy{
+  margin-top: 75%;
+  width: 50px;
+}
+.best-deal-image{
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.deal-img{
+  height: 100%;
+  width: 100%;
 }
 

@@ -5,12 +5,13 @@ import axios from 'axios';
 import Form from './components/Form.jsx'
 import DeteteForm from './components/DeleteForm.jsx';
 import UpdateForm from './components/UpdateForm.jsx';
+import BestDeals from './components/BestDeals.jsx'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: ['...loading']
     }
     this.addScrap= this.addScrap.bind(this);
     this.scrapBought=this.scrapBought.bind(this);
@@ -158,6 +159,7 @@ class App extends React.Component {
         <p className='appName'>SCRAPS</p>
           <img className='logo' src="https://scraps.s3-us-west-1.amazonaws.com/Screen+Shot+2020-07-26+at+12.57.27+PM.png"/>
       </div>
+      <BestDeals food={this.state.items}scrapBought={this.scrapBought}/>
       <List items={this.state.items} scrapBought={this.scrapBought}/>
       <Form addScrap ={this.addScrap}/>
       <div className="update-delete-container">
