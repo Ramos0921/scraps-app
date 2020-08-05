@@ -1,7 +1,7 @@
 # Scraps
 Scraps is a food resale platform for restaurants. Restaurant cooks above anything are human, which means they make mistakes. We like to call those mistakes Scraps and 99.9999% of the time Scraps end up in the trash or in the hands of a hungry employee. We offer a platform for restuarnts to sell Scraps at a discounted price to consumers that are hungry and in the market for food from their favorite restaurants.
 
-Application is now deployed on Heroku and can be visited at:
+Application is now deployed on Heroku and can be visited at: https://mvp-scraps-app.herokuapp.com/
 
 
 ## Table of Contents
